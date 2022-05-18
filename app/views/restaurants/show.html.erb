@@ -1,0 +1,34 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-primary"%> |
+<%= link_to 'Back', restaurants_path, class: "btn btn-info" %>
+
+<h2>Reviews for the restaurant <%= @restaurant.name  %></h2>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= "*" * review.rating %> <%= review.content %></li>
+  <% end %>
+</ul>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant), class: "btn btn-warning" %>
+</div>
